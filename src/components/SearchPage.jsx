@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import MovieCard from './MovieCard';
+import SearchBar from './SearchBar';
 
-const Search = () => {
+const Search = ( ) => {
 
   const [searchResult, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("Batman");
@@ -10,6 +12,7 @@ const Search = () => {
   const fetchDataSearch = async () => {
   const resp = await fetch(urlSearch);
   const result = await resp.json();
+  console.log(result.Search)
   result && setSearchResults(result.Search);
   }
 
@@ -19,21 +22,15 @@ const Search = () => {
 
   return (
     <>
-      <input 
-        type="search" 
-        id="searchBar" 
-        onChange={(e) => {
-            setSearchValue(e.target.value)}}
+      <SearchBar
+          setSearchValue={setSearchValue} 
+          fetchDataSearch={fetchDataSearch} 
       />
-      <button onClick={fetchDataSearch}>Search</button>
 
-      <h1>Movies:</h1>
       {searchResult.map( (movie, key) => (
-        <div key={key}>
-          <p>{movie.Title}</p>
-          <img src={movie.Poster} alt={movie.Title}/>
-        </div>
-
+       
+        <MovieCard key={key} Title={movie.Title} Year={movie.Year} src={movie.Poster} alt={movie.Title} href={"/detail/" + movie.imdbID}/>
+        
       ) )}
     </>
   )

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Search from './Search'
-import Detail from './Detail'
-import Favorite from './Favorite'
+import SearchPage from './SearchPage'
+import DetailPage from './DetailPage'
+import FavoritePage from './FavoritePage'
 import Header from './Header';
 import Footer from './Footer';
 
@@ -11,9 +11,9 @@ function App() {
     <BrowserRouter>
       <Header/>
       <Routes>
-        <Route exact path='/' element={<Search/>}/>
-        <Route path='/detail' element={<Detail/>}/>
-        <Route path='/favorite' element={<Favorite/>}/>
+        <Route exact path='/' element={<SearchPage/>}/>
+        <Route path='/detail/:imdbID' element={<DetailPage/>}/>
+        <Route path='/favorite' element={<FavoritePage/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
