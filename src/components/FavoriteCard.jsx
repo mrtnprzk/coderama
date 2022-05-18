@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -9,6 +9,22 @@ import Typography from '@mui/material/Typography';
 import ClearIcon from '@mui/icons-material/Clear';
 
 const FavoriteCard = ( props ) => {
+
+  const [deleteMovie, deleteShowMovie] = useState(
+    JSON.parse(localStorage.getItem('fav-movies')) || []
+  );
+
+  function deleteItem(e){
+
+    console.log(e)
+
+    // deleteMovie.splice(0, 1);
+
+    // useEffect(() => {
+    //   window.localStorage.setItem('fav-movies', JSON.stringify(deleteMovie));
+    // }, [deleteMovie]);
+  }
+
   return (
     <Card key={props.key} sx={{ display: 'flex', width: 300, margin: '1rem 0' }}>
         <Link to={props.url}>
@@ -21,7 +37,7 @@ const FavoriteCard = ( props ) => {
         </Link> 
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>
-            <IconButton>
+            <IconButton onClick={deleteItem}>
               <ClearIcon fontSize='small' sx={{ margin: '5px' }} />
             </IconButton>
           </Box>
