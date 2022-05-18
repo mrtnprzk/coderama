@@ -1,9 +1,20 @@
-import React from 'react'
+import * as React from 'react';
+import {useState, useEffect} from 'react';
+import FavoriteCard from './FavoriteCard';
 
-const Favorite = () => {
+export default function FavoritePage() {
+
+  const [showMovies, setShowMovies] = useState(
+    JSON.parse(localStorage.getItem('fav-movies')) || null
+  );
+
   return (
-    <div>Favorite</div>
-  )
+    <>
+    {showMovies.map((movie, key) => (
+     
+      <FavoriteCard key={key} Title={movie.Title} Year={movie.Year} Genre={movie.Genre} src={movie.Poster} alt={movie.Title} url={"/detail/" + movie.imdbID}/>
+      
+    ))}
+    </>
+  );
 }
-
-export default Favorite

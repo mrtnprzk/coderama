@@ -29,9 +29,18 @@ header{
     text-align: center;
 }
 
-.movie-card-action:hover{
-    color: black;
+.movie-card:hover{
     opacity: 0.9;
+}
+
+.movie-card a{
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.movie-card a:hover{
+    color: black;
 }
 
 footer{

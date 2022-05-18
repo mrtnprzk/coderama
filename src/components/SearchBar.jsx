@@ -57,7 +57,7 @@ export default function SearchAppBar({setSearchValue, fetchDataSearch}) {
                 (setSearchValue(e.target.value))}}
                 
             />
-            <Button variant="outlined" color="error" size="small" style={{marginRight: "4px"}} onClick={ fetchDataSearch }>Search</Button>
+            <Button variant="outlined" color="error" size="small" style={{margin: "4px"}} onClick={ fetchDataSearch }>Search</Button>
         </Search>
     </Toolbar>
   );
